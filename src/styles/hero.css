@@ -1,0 +1,778 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  height: min(780px, 50.8vw);
+  min-height: 690px;
+  background: #080b0e;
+  color: #fff;
+  overflow: hidden;
+}
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/assets/city-desk.webp");
+  background-size: cover;
+  background-position: center center;
+}
+.hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      #06090cd9 0%,
+      #06090c9e 29%,
+      #06090c29 51%,
+      transparent 67%
+    ),
+    linear-gradient(0deg, #080a0cb3, transparent 24%);
+}
+.hero-copy {
+  position: absolute;
+  z-index: 5;
+  left: 4.2%;
+  top: 19%;
+  width: 46%;
+  pointer-events: none;
+}
+.hero-copy h1 {
+  font-size: clamp(72px, 6.55vw, 100px);
+  font-weight: 520;
+  letter-spacing: 0.01em;
+  line-height: 1.13;
+  margin-left: -4px;
+}
+.hero-description {
+  font-size: clamp(14px, 1.32vw, 19px);
+  line-height: 1.8;
+  color: #e5e7eb;
+  letter-spacing: 0.008em;
+  margin-top: 24px;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 27px;
+  pointer-events: auto;
+  width: fit-content;
+}
+.hero-actions .button {
+  min-width: 153px;
+  min-height: 50px;
+}
+.hero-scene {
+  position: absolute;
+  right: 0;
+  top: 12%;
+  width: 56%;
+  height: 78%;
+  z-index: 2;
+}
+.hero-scene-inner {
+  position: absolute;
+  inset: 0;
+}
+.hero-monitor {
+  position: absolute;
+  width: 78%;
+  left: 4%;
+  top: 20%;
+  aspect-ratio: 1.5;
+  z-index: 2;
+}
+.hero-monitor::before {
+  content: "";
+  position: absolute;
+  left: 32.5%;
+  top: 95.6%;
+  width: 36%;
+  height: 2.4%;
+  border-radius: 50%;
+  background: #100905bd;
+  filter: blur(2px);
+  pointer-events: none;
+}
+.monitor-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.94) sepia(0.07);
+  pointer-events: none;
+}
+.screen-plane {
+  position: absolute;
+  left: 5.21%;
+  top: 5.86%;
+  width: 89.58%;
+  height: 68.65%;
+  border-radius: 3px;
+}
+.screen-ui {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #10161e;
+}
+.screen-glow {
+  position: absolute;
+  inset: -9px;
+  box-shadow: 0 0 25px #a8c0df22;
+  opacity: 0.3;
+  animation: screen-breathe 10s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-mini {
+  position: absolute;
+  left: 55%;
+  top: 77%;
+  width: 22.5%;
+  aspect-ratio: 2;
+  z-index: 4;
+  isolation: isolate;
+}
+/* The source has transparent padding: its physical base is at 82% height. */
+.hero-mini::before,
+.hero-mini::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+}
+.hero-mini::before {
+  left: 8%;
+  top: 78.5%;
+  width: 85%;
+  height: 7%;
+  background: #110904d9;
+  filter: blur(1px);
+}
+.hero-mini::after {
+  left: 12%;
+  top: 77%;
+  width: 87%;
+  height: 16%;
+  background: radial-gradient(ellipse, #1008058c, #140b033b 58%, transparent 75%);
+  transform: skewX(-20deg);
+  filter: blur(3px);
+}
+.hero-mini img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.87) sepia(0.12) saturate(0.85)
+    drop-shadow(0 1px 0.6px #130b06b3);
+}
+.device-card {
+  position: absolute;
+  left: 8%;
+  bottom: calc(80% - 4px);
+  z-index: 5;
+  width: 70%;
+  background: linear-gradient(120deg, #3a424ed1, #292c34b8);
+  border: 1px solid #bcc5d04d;
+  box-shadow: 0 12px 45px #0003;
+  backdrop-filter: blur(15px);
+  border-radius: 13px;
+  padding: 10px 14px;
+  color: #e7e9ef;
+  font-size: 11px;
+}
+.device-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.device-card-head strong {
+  font-size: 12px;
+  font-weight: 550;
+}
+.device-card-head > span {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #44d491;
+  box-shadow: 0 0 8px #44d49180;
+  animation: status-pulse 8s ease-in-out infinite;
+}
+.device-demo-label {
+  font-size: 8px;
+  color: #c0c6cf;
+  letter-spacing: 0.03em;
+  margin-top: 5px;
+}
+.device-card dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 9px 0 0;
+}
+.device-card dl div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.device-card dt {
+  color: #bbc1ca;
+  font-size: 9px;
+}
+.device-card dd {
+  margin: 0;
+  white-space: nowrap;
+  font-size: 10px;
+}
+.scene-handwriting {
+  position: absolute;
+  right: 6%;
+  bottom: 15%;
+  transform: rotate(-12deg);
+  font-family: "Snell Roundhand", "Segoe Script", cursive;
+  font-size: clamp(19px, 2vw, 28px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.14;
+  color: #e6e4e6;
+  pointer-events: none;
+  text-shadow: 0 2px 3px #000;
+}
+.feature-row {
+  position: absolute;
+  left: 4.2%;
+  bottom: 18.5%;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(22px, 2.5vw, 40px);
+  z-index: 5;
+}
+.feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.feature svg {
+  margin-top: 1px;
+  color: #f0f1f4;
+}
+.feature div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feature strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+.feature span {
+  font-size: 11px;
+  color: #b8bdc4;
+  white-space: nowrap;
+}
+.hero-bottom {
+  position: absolute;
+  left: 4.2%;
+  right: 4.2%;
+  bottom: 6.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 7;
+}
+.hero-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a1a3a9;
+  font-size: 11px;
+}
+.hero-bottom a span {
+  font-size: 10px;
+  color: #7e8087;
+  letter-spacing: 0.07em;
+  margin-right: 4px;
+}
+.hero-bottom a svg {
+  margin-left: 8px;
+}
+.replay-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #06090c33;
+  border: 1px solid #ffffff14;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  color: #b5bac1;
+}
+.replay-button:hover {
+  color: #fff;
+  background: #ffffff10;
+}
+.scene-loading {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  font-size: 13px;
+  color: #b3b7c1;
+}
+.asset-warning {
+  position: absolute;
+  left: 12%;
+  bottom: 2%;
+  font-size: 10px;
+  color: #f3d3b6;
+  z-index: 10;
+}
+.assembly-stack {
+  position: absolute;
+  left: 9%;
+  top: 25%;
+  width: 69%;
+  height: 49%;
+  pointer-events: none;
+  z-index: 6;
+  perspective: 1300px;
+}
+.assembly-sheet {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #b0bbc04d;
+  border-radius: 7px;
+  padding: 18px;
+  background: linear-gradient(130deg, #51677bd9, #111b26ed);
+  box-shadow: 0 10px 35px #0005;
+  font-size: 12px;
+}
+.assembly-sheet > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 20px;
+}
+.assembly-sheet-0 {
+  background: linear-gradient(150deg, #677889eb, #394656ee 30%, #e0ad7b 90%);
+}
+.assembly-sheet-2 {
+  background: #151c24eb;
+}
+.assembly-sheet i {
+  height: 9px;
+  width: 70px;
+  border-radius: 3px;
+  background: #c0c8d126;
+}
+.assembly-sheet i:nth-child(2) {
+  width: 110px;
+}
+.animation-paused *,
+.animation-paused *::after {
+  animation-play-state: paused !important;
+}
+@keyframes screen-breathe {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (min-width: 1600px) {
+  .hero-copy {
+    left: max(60px, calc((100vw - 1500px) / 2));
+  }
+  .feature-row {
+    left: max(60px, calc((100vw - 1500px) / 2));
+  }
+  .hero-scene {
+    right: max(0px, calc((100vw - 1700px) / 2));
+    width: 880px;
+  }
+  .hero-bottom {
+    left: max(60px, calc((100vw - 1500px) / 2));
+    right: max(60px, calc((100vw - 1500px) / 2));
+  }
+}
+@media (max-width: 1200px) {
+  .hero {
+    min-height: 660px;
+    height: 62vw;
+  }
+  .hero-copy {
+    top: 22%;
+    width: 49%;
+  }
+  .hero-copy h1 {
+    font-size: 78px;
+  }
+  .hero-description {
+    font-size: 14px;
+  }
+  .hero-actions .button {
+    min-width: 135px;
+    padding-inline: 22px;
+  }
+  .hero-scene {
+    width: 56%;
+    height: 70%;
+    top: 19%;
+  }
+  .device-card {
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+  .device-card-head strong {
+    font-size: 11px;
+  }
+  .device-card-head > span {
+    font-size: 9px;
+  }
+  .device-card dd {
+    font-size: 9px;
+  }
+  .feature-row {
+    gap: 24px;
+    bottom: 14%;
+  }
+  .feature {
+    gap: 9px;
+  }
+  .feature strong {
+    font-size: 12px;
+  }
+  .feature span {
+    font-size: 10px;
+  }
+  .feature svg {
+    width: 22px;
+  }
+  .hero-bottom {
+    bottom: 5%;
+  }
+  .scene-handwriting {
+    bottom: 16%;
+    right: 3%;
+  }
+}
+@media (min-width: 761px) and (max-width: 960px) {
+  .hero {
+    min-height: 735px;
+  }
+  .hero-copy {
+    top: 19%;
+    width: 55%;
+  }
+  .hero-copy h1 {
+    font-size: 68px;
+  }
+  .hero-description {
+    font-size: 13px;
+    max-width: 310px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .hero-actions .button {
+    min-width: 120px;
+    font-size: 12px;
+    min-height: 44px;
+    padding: 0 20px;
+  }
+  .hero-scene {
+    width: 62%;
+    top: 27%;
+    height: 60%;
+    right: -6%;
+  }
+  .hero-monitor {
+    top: 18%;
+    left: 0;
+    width: 94%;
+  }
+  .hero-mini {
+    top: 78.5%;
+    left: 62%;
+    width: 24%;
+  }
+  .device-card {
+    left: auto;
+    right: 15%;
+    bottom: calc(82% + 22px);
+    width: auto;
+    max-width: 230px;
+    padding: 10px 12px;
+  }
+  .scene-handwriting {
+    display: none;
+  }
+  .feature-row {
+    width: 88%;
+    justify-content: space-between;
+    bottom: 12%;
+    gap: 12px;
+  }
+  .feature {
+    gap: 7px;
+  }
+  .feature span {
+    font-size: 9px;
+  }
+  .feature strong {
+    font-size: 11px;
+  }
+}
+@media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: 1010px;
+    padding: 108px 24px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-background {
+    background-image: none;
+  }
+  .hero-background::after {
+    background:
+      linear-gradient(
+        180deg,
+        #080b0e 0%,
+        #080b0e 24%,
+        #080b0e20 53%,
+        #080b0e22 77%,
+        #080b0e 94%
+      ),
+      linear-gradient(90deg, #080b0e66, transparent 60%);
+  }
+  .hero-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    pointer-events: auto;
+  }
+  .hero-copy h1 {
+    font-size: clamp(52px, 16.4vw, 65px);
+    line-height: 1.12;
+    letter-spacing: 0.015em;
+    margin-left: -2px;
+  }
+  .hero-description {
+    font-size: 13px;
+    line-height: 1.85;
+    margin-top: 21px;
+    max-width: 350px;
+    color: #d7dbe0;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .hero-actions {
+    margin-top: 25px;
+    gap: 13px;
+  }
+  .hero-actions .button {
+    min-height: 46px;
+    min-width: 138px;
+    padding: 0 20px;
+    font-size: 12px;
+    border-radius: 9px;
+  }
+  .hero-actions .button-outline {
+    border-radius: 25px;
+  }
+  .hero-scene {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-top: 18px;
+    height: clamp(325px, 89.74vw, 600px);
+    flex: none;
+  }
+  /* Photo and hardware share the same responsive canvas on small screens. */
+  .hero-scene::before {
+    content: "";
+    position: absolute;
+    inset: -15% 0 -8%;
+    z-index: -1;
+    background-image:
+      linear-gradient(180deg, #080b0e, #080b0e00 25%, #080b0e00 78%, #080b0e),
+      linear-gradient(90deg, #080b0e3d, transparent 60%),
+      url("/assets/city-desk.webp");
+    background-size: 100% 100%, 100% 100%, auto 100%;
+    background-repeat: no-repeat;
+    background-position: center, center, 57% center;
+    pointer-events: none;
+  }
+  .hero-monitor {
+    width: 92%;
+    left: 0;
+    top: 15%;
+    aspect-ratio: 1.5;
+  }
+  .hero-mini {
+    width: 25%;
+    left: 64.5%;
+    top: 75%;
+  }
+  .device-card {
+    left: auto;
+    right: 18px;
+    top: auto;
+    bottom: calc(85% + 4px);
+    width: 145px;
+    padding: 10px;
+    border-radius: 9px;
+    font-size: 8px;
+    backdrop-filter: blur(10px);
+  }
+  .device-card-head strong {
+    font-size: 8px;
+  }
+  .device-card-head > span {
+    font-size: 7px;
+    gap: 4px;
+  }
+  .status-dot {
+    height: 5px;
+    width: 5px;
+  }
+  .device-demo-label {
+    font-size: 7px;
+    margin-top: 6px;
+    padding-bottom: 6px;
+  }
+  .device-card dl {
+    margin-top: 7px;
+    gap: 4px;
+  }
+  .device-card dd {
+    font-size: 7px;
+  }
+  .scene-handwriting {
+    right: 5%;
+    bottom: 0%;
+    font-size: 21px;
+  }
+  .assembly-stack {
+    left: 9%;
+    width: 76%;
+    top: 24%;
+    height: 46%;
+  }
+  .assembly-sheet {
+    padding: 12px;
+    font-size: 10px;
+  }
+  .assembly-sheet > div {
+    padding: 18px 8px;
+  }
+  .feature-row {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 17px;
+    margin-top: 34px;
+  }
+  .feature {
+    gap: 10px;
+  }
+  .feature strong {
+    font-size: 12px;
+  }
+  .feature span {
+    font-size: 9px;
+  }
+  .feature svg {
+    width: 20px;
+  }
+  .hero-bottom {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 34px;
+    width: 100%;
+  }
+  .hero-bottom a {
+    font-size: 10px;
+  }
+  .hero-bottom a span {
+    font-size: 9px;
+  }
+  .replay-button {
+    font-size: 9px;
+    padding: 7px 10px;
+  }
+  .asset-warning {
+    font-size: 8px;
+    left: 5%;
+    bottom: 0;
+  }
+}
+@media (max-width: 360px) {
+  .hero {
+    padding-inline: 20px;
+    min-height: 985px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(52px, 16.4vw, 60px);
+  }
+  .hero-description {
+    font-size: 12px;
+  }
+  .hero-actions .button {
+    min-width: 127px;
+    padding: 0 16px;
+  }
+  .hero-scene {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    height: 325px;
+  }
+  .feature-row {
+    gap: 22px 10px;
+  }
+  .feature span {
+    font-size: 8px;
+  }
+  .feature {
+    gap: 8px;
+  }
+}
+
+/* Keep a compact facility label above the monitor on tablets and phones. */
+@media (max-width: 960px) {
+  .device-card .device-demo-label, .device-card dl { display: none; }
+}
+@media (max-width: 760px) {
+  .device-card { width: auto; max-width: 180px; padding: 8px 10px; }
+  .device-card-head { flex-wrap: wrap; gap: 4px 8px; }
+}

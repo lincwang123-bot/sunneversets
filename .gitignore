@@ -1,0 +1,31 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.DS_Store
+
+/sites/
+/reference/
+/brand/
+
+# Local hosting metadata, generated evidence, and internal working notes.
+/.openai/
+/output/
+/screenshots/
+/tmp/
+/deploy/vps.json
+/docs/domain-setup.md
+/docs/deployment.md
+/docs/verification.md
+/docs/日不落-沟通纪要与待决事项.md
+
+# Credentials belong in local configuration, never in source control.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
